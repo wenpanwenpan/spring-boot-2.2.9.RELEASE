@@ -1,0 +1,2473 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "org.springframework.boot.autoconfigure.AutoConfigurationImportSelector",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_248648047 { 
+   	label=springframework
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_562300881 { 
+   	label=boot
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AbstractDiscoveredEndpoint235229484[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractDiscoveredEndpoint&lt;O extends Operation&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   discoverer: EndpointDiscoverer&lt;?, ?&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   endpointBean: Object [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># appendFields(creator: ToStringCreator)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ wasDiscoveredBy(discoverer: Class&lt;? extends EndpointDiscoverer&lt;?, ?&gt;&gt;): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AbstractEndpointCondition1005336333[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractEndpointCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getEnablementOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata, annotationClass: Class&lt;? extends Annotation&gt;): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getEndpointAttributes(annotationClass: Class&lt;?&gt;, context: ConditionContext, metadata: AnnotatedTypeMetadata): AnnotationAttributes</TD></TR>
+<TR><TD ALIGN="LEFT" ># getEndpointAttributes(type: Class&lt;?&gt;): AnnotationAttributes</TD></TR>
+<TR><TD ALIGN="LEFT" ># getEndpointType(annotationClass: Class&lt;?&gt;, context: ConditionContext, metadata: AnnotatedTypeMetadata): Class&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- isEnabledByDefault(environment: Environment): Boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AbstractExposableEndpoint238891159[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractExposableEndpoint&lt;O extends Operation&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   enabledByDefault: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: EndpointId [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   operations: List&lt;O&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AbstractNestedCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractNestedCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   configurationPhase: ConfigurationPhase [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getFinalMatchOutcome(memberOutcomes: MemberMatchOutcomes): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AbstractSessionCondition934217078[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractSessionCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   webApplicationType: WebApplicationType [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AliasedConfigurationPropertySource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AliasedConfigurationPropertySource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aliases: ConfigurationPropertyNameAliases [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   source: ConfigurationPropertySource [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ containsDescendantOf(name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfigurationProperty(name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AliasedIterableConfigurationPropertySource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AliasedIterableConfigurationPropertySource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addAliases(name: ConfigurationPropertyName): Stream&lt;ConfigurationPropertyName&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stream(): Stream&lt;ConfigurationPropertyName&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AllNestedConditions1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AllNestedConditions</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getFinalMatchOutcome(memberOutcomes: MemberMatchOutcomes): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- hasSameSize(list1: List&lt;?&gt;, list2: List&lt;?&gt;): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AnyMongoClientAvailable723494420[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AnyMongoClientAvailable</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AnyNestedCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AnyNestedCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getFinalMatchOutcome(memberOutcomes: MemberMatchOutcomes): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AutoConfigurationImportSelector1520003554[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AutoConfigurationImportSelector</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   beanClassLoader: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   beanFactory: ConfigurableListableBeanFactory [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   environment: Environment [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resourceLoader: ResourceLoader [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># asList(attributes: AnnotationAttributes, name: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkExcludedClasses(configurations: List&lt;String&gt;, exclusions: Set&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- filter(configurations: List&lt;String&gt;, autoConfigurationMetadata: AutoConfigurationMetadata): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- fireAutoConfigurationImportEvents(configurations: List&lt;String&gt;, exclusions: Set&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" ># getAttributes(metadata: AnnotationMetadata): AnnotationAttributes</TD></TR>
+<TR><TD ALIGN="LEFT" ># getAutoConfigurationEntry(autoConfigurationMetadata: AutoConfigurationMetadata, annotationMetadata: AnnotationMetadata): AutoConfigurationEntry</TD></TR>
+<TR><TD ALIGN="LEFT" ># getCandidateConfigurations(metadata: AnnotationMetadata, attributes: AnnotationAttributes): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># getExclusions(metadata: AnnotationMetadata, attributes: AnnotationAttributes): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># handleInvalidExcludes(invalidExcludes: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- invokeAwareMethods(instance: Object)</TD></TR>
+<TR><TD ALIGN="LEFT" ># isEnabled(metadata: AnnotationMetadata): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># removeDuplicates(list: List&lt;T&gt;): List&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selectImports(annotationMetadata: AnnotationMetadata): String[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AutoConfigurationMetadataLoader1520003554[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AutoConfigurationMetadataLoader</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># loadMetadata(classLoader: ClassLoader): AutoConfigurationMetadata</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadMetadata(classLoader: ClassLoader, path: String): AutoConfigurationMetadata</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadMetadata(properties: Properties): AutoConfigurationMetadata</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AutoConfigurationPackages1520003554[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AutoConfigurationPackages</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addBasePackages(constructorArguments: ConstructorArgumentValues, packageNames: String[]): String[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(beanFactory: BeanFactory): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ has(beanFactory: BeanFactory): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ register(registry: BeanDefinitionRegistry, packageNames: String...)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BindResult1658444772[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BindResult&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   value: T [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ifBound(consumer: Consumer&lt;? super T&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ map(mapper: Function&lt;? super T, ? extends U&gt;): BindResult&lt;U&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># of(value: T): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orElse(other: T): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orElseCreate(type: Class&lt;? extends T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orElseGet(other: Supplier&lt;? extends T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ orElseThrow(exceptionSupplier: Supplier&lt;? extends X&gt;): T</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Bindable1658444772[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Bindable&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   annotations: Annotation[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   boxedType: ResolvableType [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: ResolvableType [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: Supplier&lt;T&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- box(type: ResolvableType): ResolvableType</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAnnotation(type: Class&lt;A&gt;): A</TD></TR>
+<TR><TD ALIGN="LEFT" >+ listOf(elementType: Class&lt;E&gt;): Bindable&lt;List&lt;E&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mapOf(keyType: Class&lt;K&gt;, valueType: Class&lt;V&gt;): Bindable&lt;Map&lt;K, V&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- nullSafeEquals(o1: Object, o2: Object): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(type: Class&lt;T&gt;): Bindable&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(type: ResolvableType): Bindable&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ofInstance(instance: T): Bindable&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setOf(elementType: Class&lt;E&gt;): Bindable&lt;Set&lt;E&gt;&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Binder1658444772[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Binder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   conversionService: ConversionService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dataObjectBinders: List&lt;DataObjectBinder&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   defaultBindHandler: BindHandler [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   placeholdersResolver: PlaceholdersResolver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertyEditorInitializer: Consumer&lt;PropertyEditorRegistry&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sources: Iterable&lt;ConfigurationPropertySource&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ bind(name: String, target: Class&lt;T&gt;): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bind(name: String, target: Bindable&lt;T&gt;): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bind(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bind(name: String, target: Bindable&lt;T&gt;, handler: BindHandler): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bind(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler): BindResult&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- bind(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, create: boolean): T</TD></TR>
+<TR><TD ALIGN="LEFT" >- bind(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, context: Context, allowRecursiveBinding: boolean, create: boolean): T</TD></TR>
+<TR><TD ALIGN="LEFT" >- bindAggregate(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, context: Context, aggregateBinder: AggregateBinder&lt;?&gt;): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- bindDataObject(name: ConfigurationPropertyName, target: Bindable&lt;?&gt;, handler: BindHandler, context: Context, allowRecursiveBinding: boolean): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- bindObject(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, context: Context, allowRecursiveBinding: boolean): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bindOrCreate(name: String, target: Class&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bindOrCreate(name: String, target: Bindable&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bindOrCreate(name: String, target: Bindable&lt;T&gt;, handler: BindHandler): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ bindOrCreate(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler): T</TD></TR>
+<TR><TD ALIGN="LEFT" >- bindProperty(target: Bindable&lt;T&gt;, context: Context, property: ConfigurationProperty): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- containsNoDescendantOf(sources: Iterable&lt;ConfigurationPropertySource&gt;, name: ConfigurationPropertyName): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- create(target: Bindable&lt;?&gt;, context: Context): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- findProperty(name: ConfigurationPropertyName, context: Context): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(environment: Environment): Binder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(environment: Environment, defaultBindHandler: BindHandler): Binder</TD></TR>
+<TR><TD ALIGN="LEFT" >- getAggregateBinder(target: Bindable&lt;?&gt;, context: Context): AggregateBinder&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleBindError(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, context: Context, error: Exception): T</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleBindResult(name: ConfigurationPropertyName, target: Bindable&lt;T&gt;, handler: BindHandler, context: Context, result: Object, create: boolean): T</TD></TR>
+<TR><TD ALIGN="LEFT" >- isUnbindableBean(name: ConfigurationPropertyName, target: Bindable&lt;?&gt;, context: Context): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BootstrapExecutorCondition1854849903[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BootstrapExecutorCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Builder1384576651[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Builder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   condition: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ available(item: String): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ because(reason: String): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ didNotFind(article: String): ItemsBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ didNotFind(singular: String, plural: String): ItemsBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ found(article: String): ItemsBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ found(singular: String, plural: String): ItemsBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ foundExactly(result: Object): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ notAvailable(item: String): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resultedIn(result: Object): ConditionMessage</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CacheCondition1182362506[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CacheCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CacheConfigurations1182362506[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CacheConfigurations</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getConfigurationClass(cacheType: CacheType): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># getType(configurationClassName: String): CacheType</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Chain655749529[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Chain</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cache: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   compressed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   enabled: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   htmlApplicationCache: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   strategy: Strategy [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getEnabled(fixedEnabled: boolean, contentEnabled: boolean, chainEnabled: Boolean): Boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientsConfiguredCondition528807940[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientsConfiguredCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getRegistrations(environment: Environment): Map&lt;String, Registration&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionAndOutcome1925777804[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionAndOutcome</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   condition: Condition [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   outcome: ConditionOutcome [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionAndOutcomes1925777804[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionAndOutcomes</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   outcomes: Set&lt;ConditionAndOutcome&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(condition: Condition, outcome: ConditionOutcome)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iterator(): Iterator&lt;ConditionAndOutcome&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionEvaluationReport1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionEvaluationReport</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   addedAncestorOutcomes: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   exclusions: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   outcomes: SortedMap&lt;String, ConditionAndOutcomes&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: ConditionEvaluationReport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unconditionalClasses: Set&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addNoMatchOutcomeToAncestors(source: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ find(beanFactory: BeanFactory): ConditionEvaluationReport</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(beanFactory: ConfigurableListableBeanFactory): ConditionEvaluationReport</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDelta(previousReport: ConditionEvaluationReport): ConditionEvaluationReport</TD></TR>
+<TR><TD ALIGN="LEFT" >- locateParent(beanFactory: BeanFactory, report: ConditionEvaluationReport)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recordConditionEvaluation(source: String, condition: Condition, outcome: ConditionOutcome)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recordEvaluationCandidates(evaluationCandidates: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recordExclusions(exclusions: Collection&lt;String&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionEvaluationReportAutoConfigurationImportListener1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionEvaluationReportAutoConfigurationImportListener</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   beanFactory: ConfigurableListableBeanFactory [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onAutoConfigurationImportEvent(event: AutoConfigurationImportEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionMessage1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionMessage</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   message: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ andCondition(condition: Class&lt;? extends Annotation&gt;, details: Object...): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ andCondition(condition: String, details: Object...): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(message: String): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ empty(): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ forCondition(condition: Class&lt;? extends Annotation&gt;, details: Object...): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ forCondition(condition: String, details: Object...): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(message: String, args: Object...): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(messages: Collection&lt;? extends ConditionMessage&gt;): ConditionMessage</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionOutcome1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionOutcome</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   match: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   message: ConditionMessage [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ inverse(outcome: ConditionOutcome): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ match(): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ match(message: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ match(message: ConditionMessage): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ noMatch(message: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ noMatch(message: ConditionMessage): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConfigAvailableCondition1298436375[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConfigAvailableCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConfigAvailableCondition587798533[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConfigAvailableCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConfigurationProperty825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConfigurationProperty</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: ConfigurationPropertyName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   origin: Origin [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: Object [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ compareTo(other: ConfigurationProperty): int</TD></TR>
+<TR><TD ALIGN="LEFT" ># of(name: ConfigurationPropertyName, value: OriginTrackedValue): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" ># of(name: ConfigurationPropertyName, value: Object, origin: Origin): ConfigurationProperty</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConfigurationPropertyName825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConfigurationPropertyName</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   elements: Elements [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   string: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   uniformElements: CharSequence[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># adapt(name: CharSequence, separator: char): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" ># adapt(name: CharSequence, separator: char, elementValueProcessor: Function&lt;CharSequence, CharSequence&gt;): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(elements: String): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >- buildToString(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ chop(size: int): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >- compare(n1: ConfigurationPropertyName, n2: ConfigurationPropertyName): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- compare(e1: String, type1: ElementType, e2: String, type2: ElementType): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ compareTo(other: ConfigurationPropertyName): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertElement(element: CharSequence, lowercase: boolean, filter: ElementCharPredicate): CharSequence</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertToDashedElement(element: CharSequence): CharSequence</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertToOriginalForm(element: CharSequence): CharSequence</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertToUniformElement(element: CharSequence): CharSequence</TD></TR>
+<TR><TD ALIGN="LEFT" >- dashIgnoringElementEquals(e1: Elements, e2: Elements, i: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- defaultElementEquals(e1: Elements, e2: Elements, i: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- elementDiffers(e1: Elements, e2: Elements, i: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- elementsEqual(name: ConfigurationPropertyName): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- elementsOf(name: CharSequence, returnNullIfInvalid: boolean): Elements</TD></TR>
+<TR><TD ALIGN="LEFT" >- elementsOf(name: CharSequence, returnNullIfInvalid: boolean, parserCapacity: int): Elements</TD></TR>
+<TR><TD ALIGN="LEFT" >- fastElementEquals(e1: Elements, e2: Elements, i: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getElement(elementIndex: int, form: Form): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- getInvalidChars(elements: Elements, index: int): List&lt;Character&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLastElement(form: Form): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isAncestorOf(name: ConfigurationPropertyName): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># isIndexed(elementIndex: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isNumericIndex(elementIndex: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isParentOf(name: ConfigurationPropertyName): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isValid(name: CharSequence): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(name: CharSequence): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" ># of(name: CharSequence, returnNullIfInvalid: boolean): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >- probablySingleElementOf(name: CharSequence): Elements</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConfigurationPropertyNameAliases825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConfigurationPropertyNameAliases</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   aliases: MultiValueMap&lt;ConfigurationPropertyName, ConfigurationPropertyName&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addAliases(name: String, aliases: String...)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addAliases(name: ConfigurationPropertyName, aliases: ConfigurationPropertyName...)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAliases(name: ConfigurationPropertyName): List&lt;ConfigurationPropertyName&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNameForAlias(alias: ConfigurationPropertyName): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iterator(): Iterator&lt;ConfigurationPropertyName&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Configurations258527372[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Configurations</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   reactiveConfiguration: Class&lt;?&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   servletConfiguration: Class&lt;?&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getConfiguration(webApplicationType: WebApplicationType): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># getName(configuration: Class&lt;?&gt;): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Content655749529[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Content</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   enabled: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paths: String[] [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CouchbaseCondition637718083[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CouchbaseCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DataSourceBuilder110150352[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DataSourceBuilder&lt;T extends DataSource&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   classLoader: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   properties: Map&lt;String, String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: Class&lt;? extends DataSource&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- bind(result: DataSource)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ build(): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ create(): DataSourceBuilder&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ create(classLoader: ClassLoader): DataSourceBuilder&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ driverClassName(driverClassName: String): DataSourceBuilder&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ findType(classLoader: ClassLoader): Class&lt;? extends DataSource&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- maybeGetDriverClassName()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ password(password: String): DataSourceBuilder&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ type(type: Class&lt;D&gt;): DataSourceBuilder&lt;D&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ url(url: String): DataSourceBuilder&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ username(username: String): DataSourceBuilder&lt;T&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DefaultCookieSerializerCondition1095612779[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DefaultCookieSerializerCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DefaultDispatcherServletCondition1155527256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DefaultDispatcherServletCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DefaultPropertyMapper825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DefaultPropertyMapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   lastMappedConfigurationPropertyName: LastMapping&lt;ConfigurationPropertyName&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastMappedPropertyName: LastMapping&lt;String&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ map(configurationPropertyName: ConfigurationPropertyName): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ map(propertySourceName: String): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- tryMap(propertySourceName: String): PropertyMapping[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DelegatingPropertyMapper1722068365[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DelegatingPropertyMapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   first: PropertyMapper [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   second: PropertyMapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ map(configurationPropertyName: ConfigurationPropertyName): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- map(mapper: PropertyMapper, configurationPropertyName: ConfigurationPropertyName): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ map(propertySourceName: String): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- map(mapper: PropertyMapper, propertySourceName: String): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- merge(first: PropertyMapping[], second: PropertyMapping[]): PropertyMapping[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DevToolsDataSourceCondition800397202[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DevToolsDataSourceCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DevToolsEnablementDeducer157075266[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DevToolsEnablementDeducer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- isSkippedStackElement(element: StackTraceElement): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shouldEnable(thread: Thread): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DiscoveredControllerEndpoint484051758[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DiscoveredControllerEndpoint</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   rootPath: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DiscoveredJmxEndpoint1041024947[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DiscoveredJmxEndpoint</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DiscoveredServletEndpoint484051758[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DiscoveredServletEndpoint</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   endpointServlet: EndpointServlet [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rootPath: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DiscoveredWebEndpoint484051758[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DiscoveredWebEndpoint</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   rootPath: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DiscovererEndpointFilter235229484[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DiscovererEndpointFilter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   discoverer: Class&lt;? extends EndpointDiscoverer&lt;?, ?&gt;&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ match(endpoint: DiscoveredEndpoint&lt;?&gt;): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DispatcherServletRegistrationCondition1155527256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DispatcherServletRegistrationCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- checkDefaultDispatcherName(beanFactory: ConfigurableListableBeanFactory): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkServletRegistration(beanFactory: ConfigurableListableBeanFactory): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- startMessage(): Builder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EmbeddedDatabaseCondition1397354395[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EmbeddedDatabaseCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   pooledCondition: SpringBootCondition [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- hasDataSourceUrlProperty(context: ConditionContext): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EmbeddedLdapCondition1419724749[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EmbeddedLdapCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EndpointId238891159[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EndpointId</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   lowerCaseAlphaNumeric: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lowerCaseValue: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ fromPropertyValue(value: String): EndpointId</TD></TR>
+<TR><TD ALIGN="LEFT" >- getAlphaNumerics(value: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- logWarning(value: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- migrateLegacyId(environment: Environment, value: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(value: String): EndpointId</TD></TR>
+<TR><TD ALIGN="LEFT" >+ of(environment: Environment, value: String): EndpointId</TD></TR>
+<TR><TD ALIGN="LEFT" ># resetLoggedWarnings()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toLowerCaseString(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EndpointPatterns2007539611[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EndpointPatterns</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   empty: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   endpointIds: Set&lt;EndpointId&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   matchesAll: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># matches(endpointId: EndpointId): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ErrorTemplateMissingCondition1970360864[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ErrorTemplateMissingCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExposeExcludePropertyEndpointFilter2086736288[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExposeExcludePropertyEndpointFilter&lt;E extends ExposableEndpoint&lt;?&gt;&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Exposure1200974813[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Exposure</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># isExposed(id: EndpointId): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FilteredConfigurationPropertiesSource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FilteredConfigurationPropertiesSource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   filter: Predicate&lt;ConfigurationPropertyName&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   source: ConfigurationPropertySource [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ containsDescendantOf(name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfigurationProperty(name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FilteredIterableConfigurationPropertiesSource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FilteredIterableConfigurationPropertiesSource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ containsDescendantOf(name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stream(): Stream&lt;ConfigurationPropertyName&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FilteringSpringBootCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FilteringSpringBootCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   beanClassLoader: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   beanFactory: BeanFactory [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># filter(classNames: Collection&lt;String&gt;, classNameFilter: ClassNameFilter, classLoader: ClassLoader): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># getOutcomes(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ match(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): boolean[]</TD></TR>
+<TR><TD ALIGN="LEFT" ># resolve(className: String, classLoader: ClassLoader): Class&lt;?&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Fixed655749529[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fixed</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   enabled: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   paths: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   version: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FlywayDataSourceCondition1452256357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FlywayDataSourceCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FreeMarkerTemplateAvailabilityProvider1703133902[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FreeMarkerTemplateAvailabilityProvider</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GitResourceAvailableCondition607487180[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GitResourceAvailableCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GroovyTemplateAvailabilityProvider1566371406[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GroovyTemplateAvailabilityProvider</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+HazelcastConfigResourceCondition1410563387[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)HazelcastConfigResourceCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   configSystemProperty: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getResourceOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ImportAutoConfigurationImportSelector1520003554[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ImportAutoConfigurationImportSelector</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- collectAnnotations(source: Class&lt;?&gt;, annotations: MultiValueMap&lt;Class&lt;?&gt;, Annotation&gt;, seen: HashSet&lt;Class&lt;?&gt;&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- collectCandidateConfigurations(source: Class&lt;?&gt;, annotations: List&lt;Annotation&gt;, candidates: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ determineImports(metadata: AnnotationMetadata): Set&lt;Object&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># getAnnotations(metadata: AnnotationMetadata): Map&lt;Class&lt;?&gt;, List&lt;Annotation&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># getAttributes(metadata: AnnotationMetadata): AnnotationAttributes</TD></TR>
+<TR><TD ALIGN="LEFT" ># getCandidateConfigurations(metadata: AnnotationMetadata, attributes: AnnotationAttributes): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getConfigurationsForAnnotation(source: Class&lt;?&gt;, annotation: Annotation): Collection&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># getExclusions(metadata: AnnotationMetadata, attributes: AnnotationAttributes): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># handleInvalidExcludes(invalidExcludes: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadFactoryNames(source: Class&lt;?&gt;): Collection&lt;String&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+IncludeExcludeEndpointFilter1330765586[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IncludeExcludeEndpointFilter&lt;E extends ExposableEndpoint&lt;?&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   defaultIncludes: EndpointPatterns [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   endpointType: Class&lt;E&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   exclude: EndpointPatterns [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   include: EndpointPatterns [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- bind(binder: Binder, name: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- isExcluded(endpointId: EndpointId): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- isIncluded(endpointId: EndpointId): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ match(endpoint: E): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># match(endpointId: EndpointId): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+IssuerUriCondition1667207167[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IssuerUriCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ItemsBuilder1384576651[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ItemsBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   condition: Builder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   plural: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   reason: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   singular: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ atAll(): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ items(items: Object...): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ items(style: Style, items: Object...): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ items(items: Collection&lt;?&gt;): ConditionMessage</TD></TR>
+<TR><TD ALIGN="LEFT" >+ items(style: Style, items: Collection&lt;?&gt;): ConditionMessage</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JCacheAvailableCondition3850620[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JCacheAvailableCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JCacheProviderAvailableCondition3850620[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JCacheProviderAvailableCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JacksonAndJsonbUnavailableCondition14627095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JacksonAndJsonbUnavailableCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JndiLocator1810741940[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JndiLocator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   locations: String[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ lookupFirstLocation(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JndiOrPropertyCondition231623438[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JndiOrPropertyCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JspTemplateAvailabilityProvider1720743839[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JspTemplateAvailabilityProvider</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getResourceName(view: String, environment: Environment): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isTemplateAvailable(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+KeyValueCondition1667207167[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)KeyValueCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LiquibaseDataSourceCondition92411471[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LiquibaseDataSourceCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Log4JCoreLoggerContextCondition1843499506[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Log4JCoreLoggerContextCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LogFileCondition1148123300[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LogFileCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getLogFileConfig(environment: Environment, configName: String, deprecatedConfigName: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LogbackLoggingCondition708914905[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LogbackLoggingCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MailSenderCondition1577385776[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MailSenderCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MapConfigurationPropertySource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MapConfigurationPropertySource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   delegate: IterableConfigurationPropertySource [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   source: Map&lt;String, Object&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- assertNotReadOnlySystemAttributesMap(map: Map&lt;?, ?&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfigurationProperty(name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iterator(): Iterator&lt;ConfigurationPropertyName&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ put(name: Object, value: Object)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ putAll(map: Map&lt;?, ?&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stream(): Stream&lt;ConfigurationPropertyName&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MatchResult1185426515[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MatchResult</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   matchedAnnotations: Map&lt;String, Collection&lt;String&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   matchedNames: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   matchedTypes: Map&lt;String, Collection&lt;String&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   namesOfAllMatches: Set&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unmatchedAnnotations: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unmatchedNames: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unmatchedTypes: List&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- recordMatchedAnnotation(annotation: String, matchingNames: Collection&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordMatchedName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordMatchedType(type: String, matchingNames: Collection&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordUnmatchedAnnotation(annotation: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordUnmatchedName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordUnmatchedType(type: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MultipleNonPrimaryMeterRegistriesCondition456142625[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MultipleNonPrimaryMeterRegistriesCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MustacheTemplateAvailabilityProvider552944820[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MustacheTemplateAvailabilityProvider</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isTemplateAvailable(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NoTemplateAvailabilityProvider1668257829[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NoTemplateAvailabilityProvider</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isTemplateAvailable(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NonServletApplicationCondition220224379[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NonServletApplicationCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NoneNestedConditions1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NoneNestedConditions</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getFinalMatchOutcome(memberOutcomes: MemberMatchOutcomes): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NotReactiveWebApplicationCondition1172978353[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NotReactiveWebApplicationCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnAvailableEndpointCondition1005336333[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnAvailableEndpointCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getExposures(environment: Environment): Set&lt;Exposure&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnBeanCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnBeanCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addAll(result: Set&lt;String&gt;, additional: Collection&lt;String&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- addAll(result: Set&lt;String&gt;, additional: String[]): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- appendMessageForMatches(reason: StringBuilder, matches: Map&lt;String, Collection&lt;String&gt;&gt;, description: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- appendMessageForNoMatches(reason: StringBuilder, unmatched: Collection&lt;String&gt;, description: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- collectBeanNamesForAnnotation(beanFactory: ListableBeanFactory, annotationType: Class&lt;? extends Annotation&gt;, considerHierarchy: boolean, result: Set&lt;String&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- collectBeanNamesForType(beanFactory: ListableBeanFactory, considerHierarchy: boolean, type: Class&lt;?&gt;, parameterizedContainers: Set&lt;Class&lt;?&gt;&gt;, result: Set&lt;String&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- containsBean(beanFactory: ConfigurableListableBeanFactory, beanName: String, considerHierarchy: boolean): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- createOnBeanNoMatchReason(matchResult: MatchResult): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- createOnMissingBeanNoMatchReason(matchResult: MatchResult): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- findBeanDefinition(beanFactory: ConfigurableListableBeanFactory, beanName: String, considerHierarchy: boolean): BeanDefinition</TD></TR>
+<TR><TD ALIGN="LEFT" >- getBeanNamesForAnnotation(classLoader: ClassLoader, beanFactory: ConfigurableListableBeanFactory, type: String, considerHierarchy: boolean): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getBeanNamesForType(classLoader: ClassLoader, considerHierarchy: boolean, beanFactory: ListableBeanFactory, type: String, parameterizedContainers: Set&lt;Class&lt;?&gt;&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getBeanNamesForType(beanFactory: ListableBeanFactory, considerHierarchy: boolean, type: Class&lt;?&gt;, parameterizedContainers: Set&lt;Class&lt;?&gt;&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getMatchingBeans(context: ConditionContext, spec: Spec&lt;?&gt;): MatchResult</TD></TR>
+<TR><TD ALIGN="LEFT" >- getNamesOfBeansIgnoredByType(classLoader: ClassLoader, beanFactory: ListableBeanFactory, considerHierarchy: boolean, ignoredTypes: Set&lt;String&gt;, parameterizedContainers: Set&lt;Class&lt;?&gt;&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getOutcome(requiredBeanTypes: Set&lt;String&gt;, annotation: Class&lt;? extends Annotation&gt;): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getOutcomes(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- getPrimaryBeans(beanFactory: ConfigurableListableBeanFactory, beanNames: Set&lt;String&gt;, considerHierarchy: boolean): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- hasSingleAutowireCandidate(beanFactory: ConfigurableListableBeanFactory, beanNames: Set&lt;String&gt;, considerHierarchy: boolean): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- resolveAnnotationType(classLoader: ClassLoader, type: String): Class&lt;? extends Annotation&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnBootstrapHostsCondition283908723[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnBootstrapHostsCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnClassCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnClassCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addAll(list: List&lt;String&gt;, itemsToAdd: List&lt;Object&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- createOutcomesResolver(autoConfigurationClasses: String[], start: int, end: int, autoConfigurationMetadata: AutoConfigurationMetadata): OutcomesResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >- getCandidates(metadata: AnnotatedTypeMetadata, annotationType: Class&lt;?&gt;): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getOutcomes(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- resolveOutcomesThreaded(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnCloudPlatformCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnCloudPlatformCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getMatchOutcome(environment: Environment, cloudPlatform: CloudPlatform): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledDevToolsCondition893855324[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledDevToolsCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledEndpointCondition1005336333[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledEndpointCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledHealthIndicatorCondition1949267481[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledHealthIndicatorCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledInfoContributorCondition1955549945[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledInfoContributorCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledLoggingSystemCondition1693581417[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledLoggingSystemCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEnabledResourceChainCondition977558856[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEnabledResourceChainCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getEnabledProperty(environment: ConfigurableEnvironment, key: String, defaultValue: Boolean): Boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnEndpointElementCondition97176771[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnEndpointElementCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   annotationType: Class&lt;? extends Annotation&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getDefaultEndpointsOutcome(context: ConditionContext): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getEndpointOutcome(context: ConditionContext, endpointName: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnExpressionCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnExpressionCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- evaluateExpression(beanFactory: ConfigurableListableBeanFactory, expression: String): Boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- wrapIfNecessary(expression: String): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnHazelcastAndJpaCondition1072754443[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnHazelcastAndJpaCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnInitializedRestarterCondition885724324[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnInitializedRestarterCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnJavaCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnJavaCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getMatchOutcome(range: Range, runningVersion: JavaVersion, version: JavaVersion): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- isWithin(runningVersion: JavaVersion, range: Range, version: JavaVersion): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnJndiCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnJndiCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getJndiLocator(locations: String[]): JndiLocator</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getMatchOutcome(locations: String[]): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnManagementPortCondition1579274968[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnManagementPortCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- isWebApplicationContext(context: ConditionContext): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnPropertyCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnPropertyCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- annotationAttributesFromMultiValueMap(multiValueMap: MultiValueMap&lt;String, Object&gt;): List&lt;AnnotationAttributes&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- determineOutcome(annotationAttributes: AnnotationAttributes, resolver: PropertyResolver): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnPropertyListCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnPropertyListCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   messageBuilder: Supplier&lt;Builder&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertyName: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnRSocketWebServerCondition99106964[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnRSocketWebServerCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnRepositoryTypeCondition238984246[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnRepositoryTypeCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getTypeProperty(environment: Environment, store: String): RepositoryType</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnResourceCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnResourceCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- collectValues(names: List&lt;String&gt;, values: List&lt;Object&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnWebApplicationCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnWebApplicationCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- deduceType(metadata: AnnotatedTypeMetadata): Type</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getOutcome(type: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getOutcomes(autoConfigurationClasses: String[], autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- isAnyWebApplication(context: ConditionContext, required: boolean): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- isReactiveWebApplication(context: ConditionContext): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- isServletWebApplication(context: ConditionContext): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- isWebApplication(context: ConditionContext, metadata: AnnotatedTypeMetadata, required: boolean): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnWsdlLocationsCondition1744067162[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnWsdlLocationsCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PathBasedTemplateAvailabilityProvider1622584570[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PathBasedTemplateAvailabilityProvider</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   className: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertiesClass: Class&lt;TemplateAvailabilityProperties&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertyPrefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isTemplateAvailable(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- isTemplateAvailable(view: String, resourceLoader: ResourceLoader, properties: TemplateAvailabilityProperties): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PooledDataSourceAvailableCondition1397354395[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PooledDataSourceAvailableCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PooledDataSourceCondition1397354395[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PooledDataSourceCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PreferGsonOrJacksonAndJsonbUnavailableCondition14627095[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PreferGsonOrJacksonAndJsonbUnavailableCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PreferJsonbOrMissingJacksonAndGsonCondition1838096036[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PreferJsonbOrMissingJacksonAndGsonCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PropertiesAutoConfigurationMetadata1377215651[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PropertiesAutoConfigurationMetadata</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   properties: Properties [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ get(className: String, key: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(className: String, key: String, defaultValue: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getInteger(className: String, key: String): Integer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getInteger(className: String, key: String, defaultValue: Integer): Integer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSet(className: String, key: String): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSet(className: String, key: String, defaultValue: Set&lt;String&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ wasProcessed(className: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PropertyMapping825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PropertyMapping</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   configurationPropertyName: ConfigurationPropertyName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertySourceName: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># isApplicable(name: ConfigurationPropertyName): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PropertySourceOrigin1363403333[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PropertySourceOrigin</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   propertyName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertySource: PropertySource&lt;?&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ get(propertySource: PropertySource&lt;?&gt;, name: String): Origin</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReactiveSessionCondition934217078[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReactiveSessionCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReactiveUserDetailsServiceCondition1367348739[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReactiveUserDetailsServiceCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Registrar1694777448[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Registrar</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ determineImports(metadata: AnnotationMetadata): Set&lt;Object&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerBeanDefinitions(metadata: AnnotationMetadata, registry: BeanDefinitionRegistry)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RegistrationConfiguredCondition1280856381[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RegistrationConfiguredCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getRegistrations(environment: Environment): Map&lt;String, Registration&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ResourceBundleCondition335867280[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ResourceBundleCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getMatchOutcomeForBasename(context: ConditionContext, basename: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getResources(classLoader: ClassLoader, name: String): Resource[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ResourceCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ResourceCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   property: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resourceLocations: String[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># getResourceOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" ># startConditionMessage(): Builder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ServletSessionCondition934217078[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ServletSessionCondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SessionStoreMappings934217078[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SessionStoreMappings</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># getConfigurationClass(webApplicationType: WebApplicationType, sessionStoreType: StoreType): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># getType(webApplicationType: WebApplicationType, configurationClass: String): StoreType</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SingleCandidateSpec1185426515[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SingleCandidateSpec</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># extractTypes(attributes: MultiValueMap&lt;String, Object&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># validate(ex: BeanTypeDeductionException)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Spec1185426515[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Spec&lt;A extends Annotation&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   annotationType: Class&lt;? extends Annotation&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   annotations: Set&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   classLoader: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ignoredTypes: Set&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   names: Set&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parameterizedContainers: Set&lt;Class&lt;?&gt;&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   strategy: SearchStrategy [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   types: Set&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- deducedBeanType(context: ConditionContext, metadata: AnnotatedTypeMetadata): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- deducedBeanTypeForBeanMethod(context: ConditionContext, metadata: MethodMetadata): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- extract(attributes: MultiValueMap&lt;String, Object&gt;, attributeNames: String...): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># extractTypes(attributes: MultiValueMap&lt;String, Object&gt;): Set&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- findBeanMethod(declaringClass: Class&lt;?&gt;, methodName: String): Method</TD></TR>
+<TR><TD ALIGN="LEFT" >- getReturnType(context: ConditionContext, metadata: MethodMetadata): Class&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getReturnTypeGeneric(metadata: MethodMetadata, classLoader: ClassLoader): Class&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- hasAtLeastOneElement(sets: Set&lt;?&gt;...): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- isBeanMethod(method: Method): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- isParameterizedContainer(type: Class&lt;?&gt;): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- merge(result: Set&lt;String&gt;, additional: String...)</TD></TR>
+<TR><TD ALIGN="LEFT" ># message(): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" ># message(message: ConditionMessage): Builder</TD></TR>
+<TR><TD ALIGN="LEFT" >- resolveWhenPossible(classNames: Set&lt;String&gt;): Set&lt;Class&lt;?&gt;&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># validate(ex: BeanTypeDeductionException)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Spec1608277464[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Spec</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   havingValue: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   matchIfMissing: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   names: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- collectProperties(resolver: PropertyResolver, missing: List&lt;String&gt;, nonMatching: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getNames(annotationAttributes: Map&lt;String, Object&gt;): String[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- isMatch(value: String, requiredValue: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SpringBootCondition1603553265[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SpringBootCondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   logger: Log [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># anyMatches(context: ConditionContext, metadata: AnnotatedTypeMetadata, conditions: Condition...): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- getClassOrMethodName(metadata: AnnotatedTypeMetadata): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- getLogMessage(classOrMethodName: String, outcome: ConditionOutcome): StringBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMatchOutcome(context: ConditionContext, metadata: AnnotatedTypeMetadata): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getName(metadata: AnnotatedTypeMetadata): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># logOutcome(classOrMethodName: String, outcome: ConditionOutcome)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ matches(context: ConditionContext, metadata: AnnotatedTypeMetadata): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># matches(context: ConditionContext, metadata: AnnotatedTypeMetadata, condition: Condition): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- recordEvaluation(context: ConditionContext, classOrMethodName: String, outcome: ConditionOutcome)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SpringConfigurationPropertySource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SpringConfigurationPropertySource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   containsDescendantOf: Function&lt;ConfigurationPropertyName, ConfigurationPropertyState&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapper: PropertyMapper [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   propertySource: PropertySource&lt;?&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ containsDescendantOf(name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" >- containsDescendantOfForRandom(prefix: String, name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" ># find(mappings: PropertyMapping[], name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >- find(mapping: PropertyMapping): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" ># from(source: PropertySource&lt;?&gt;): SpringConfigurationPropertySource</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfigurationProperty(name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >- getContainsDescendantOfForSource(source: PropertySource&lt;?&gt;): Function&lt;ConfigurationPropertyName, ConfigurationPropertyState&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getPropertyMapper(source: PropertySource&lt;?&gt;): PropertyMapper</TD></TR>
+<TR><TD ALIGN="LEFT" >- getRootSource(source: PropertySource&lt;?&gt;): PropertySource&lt;?&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- hasSystemEnvironmentName(source: PropertySource&lt;?&gt;): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- isFullEnumerable(source: PropertySource&lt;?&gt;): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SpringIterableConfigurationPropertySource825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SpringIterableConfigurationPropertySource</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cache: Cache [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- assertEnumerablePropertySource()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ containsDescendantOf(name: ConfigurationPropertyName): ConfigurationPropertyState</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConfigurationProperty(name: ConfigurationPropertyName): ConfigurationProperty</TD></TR>
+<TR><TD ALIGN="LEFT" >- getPropertyMappings(cache: Cache): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iterator(): Iterator&lt;ConfigurationPropertyName&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stream(): Stream&lt;ConfigurationPropertyName&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StandardOutcomesResolver2091883935[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StandardOutcomesResolver</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   autoConfigurationClasses: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   autoConfigurationMetadata: AutoConfigurationMetadata [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   beanClassLoader: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   end: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   start: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- getOutcome(candidates: String): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getOutcome(className: String, classLoader: ClassLoader): ConditionOutcome</TD></TR>
+<TR><TD ALIGN="LEFT" >- getOutcomes(autoConfigurationClasses: String[], start: int, end: int, autoConfigurationMetadata: AutoConfigurationMetadata): ConditionOutcome[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resolveOutcomes(): ConditionOutcome[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Strategy655749529[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Strategy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   content: Content [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fixed: Fixed [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SystemEnvironmentPropertyMapper825020930[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SystemEnvironmentPropertyMapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- convertLegacyName(name: ConfigurationPropertyName): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertLegacyNameElement(element: String): Object</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertName(propertySourceName: String): ConfigurationPropertyName</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertName(name: ConfigurationPropertyName): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- convertName(name: ConfigurationPropertyName, numberOfElements: int): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- isNumber(string: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ map(configurationPropertyName: ConfigurationPropertyName): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ map(propertySourceName: String): PropertyMapping[]</TD></TR>
+<TR><TD ALIGN="LEFT" >- processElementValue(value: CharSequence): CharSequence</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TemplateAvailabilityProperties46573740[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TemplateAvailabilityProperties</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   suffix: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TemplateAvailabilityProviders1622584570[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TemplateAvailabilityProviders</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cache: Map&lt;String, TemplateAvailabilityProvider&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   providers: List&lt;TemplateAvailabilityProvider&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolved: Map&lt;String, TemplateAvailabilityProvider&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- findProvider(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): TemplateAvailabilityProvider</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getProvider(view: String, applicationContext: ApplicationContext): TemplateAvailabilityProvider</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getProvider(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): TemplateAvailabilityProvider</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThreadedOutcomesResolver2091883935[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThreadedOutcomesResolver</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   outcomes: ConditionOutcome[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   thread: Thread [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ resolveOutcomes(): ConditionOutcome[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ThymeleafTemplateAvailabilityProvider153946961[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ThymeleafTemplateAvailabilityProvider</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isTemplateAvailable(view: String, environment: Environment, classLoader: ClassLoader, resourceLoader: ResourceLoader): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+AbstractEndpointCondition1005336333 -> OnAvailableEndpointCondition1005336333[arrowhead=none, arrowtail=empty, dir=both];
+AbstractEndpointCondition1005336333 -> OnEnabledEndpointCondition1005336333[arrowhead=none, arrowtail=empty, dir=both];
+AbstractNestedCondition1603553265 -> AllNestedConditions1603553265[arrowhead=none, arrowtail=empty, dir=both];
+AbstractNestedCondition1603553265 -> AnyNestedCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+AbstractNestedCondition1603553265 -> NoneNestedConditions1603553265[arrowhead=none, arrowtail=empty, dir=both];
+AbstractSessionCondition934217078 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+AbstractSessionCondition934217078 -> ReactiveSessionCondition934217078[arrowhead=none, arrowtail=empty, dir=both];
+AbstractSessionCondition934217078 -> ServletSessionCondition934217078[arrowhead=none, arrowtail=empty, dir=both];
+AbstractSessionCondition934217078 -> SessionStoreMappings934217078[label="getMatchOutcome() -> getType()"];
+AliasedConfigurationPropertySource825020930 -> AliasedIterableConfigurationPropertySource825020930[arrowhead=none, arrowtail=empty, dir=both];
+AliasedConfigurationPropertySource825020930 -> ConfigurationPropertyName825020930[label="containsDescendantOf() -> isAncestorOf()"];
+AliasedConfigurationPropertySource825020930 -> ConfigurationPropertyNameAliases825020930[label="aliases
+[0..1]"];
+AllNestedConditions1603553265 -> Builder1384576651[label="getFinalMatchOutcome() -> because()"];
+AllNestedConditions1603553265 -> OnHazelcastAndJpaCondition1072754443[arrowhead=none, arrowtail=empty, dir=both];
+AllNestedConditions1603553265 -> OnRSocketWebServerCondition99106964[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> AnyMongoClientAvailable723494420[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> BootstrapExecutorCondition1854849903[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> Builder1384576651[label="getFinalMatchOutcome() -> because()"];
+AnyNestedCondition1603553265 -> CouchbaseCondition637718083[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> DefaultCookieSerializerCondition1095612779[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> FlywayDataSourceCondition1452256357[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> JCacheAvailableCondition3850620[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> JndiOrPropertyCondition231623438[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> LiquibaseDataSourceCondition92411471[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> MailSenderCondition1577385776[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> PooledDataSourceCondition1397354395[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> PreferGsonOrJacksonAndJsonbUnavailableCondition14627095[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> PreferJsonbOrMissingJacksonAndGsonCondition1838096036[arrowhead=none, arrowtail=empty, dir=both];
+AnyNestedCondition1603553265 -> ReactiveUserDetailsServiceCondition1367348739[arrowhead=none, arrowtail=empty, dir=both];
+AutoConfigurationImportSelector1520003554 -> AutoConfigurationMetadataLoader1520003554[label="selectImports() -> loadMetadata()"];
+AutoConfigurationImportSelector1520003554 -> ConditionEvaluationReportAutoConfigurationImportListener1603553265[arrowhead=none];
+AutoConfigurationImportSelector1520003554 -> FilteringSpringBootCondition1603553265[arrowhead=none];
+AutoConfigurationImportSelector1520003554 -> ImportAutoConfigurationImportSelector1520003554[arrowhead=none, arrowtail=empty, dir=both];
+Builder1384576651 -> ItemsBuilder1384576651[label="foundExactly() -> items()"];
+CacheCondition1182362506 -> CacheConfigurations1182362506[label="getMatchOutcome() -> getType()"];
+CacheCondition1182362506 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+Chain655749529 -> Strategy655749529[label="strategy
+[0..1]"];
+ClientsConfiguredCondition528807940 -> BindResult1658444772[label="getRegistrations() -> orElse()"];
+ClientsConfiguredCondition528807940 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+ConditionAndOutcome1925777804 -> ConditionOutcome1603553265[label="outcome
+[0..1]"];
+ConditionAndOutcomes1925777804 -> ConditionAndOutcome1925777804[label="outcomes
+[0..*]"];
+ConditionEvaluationReport1603553265 -> Builder1384576651[label="addNoMatchOutcomeToAncestors() -> because()"];
+ConditionEvaluationReport1603553265 -> ConditionAndOutcomes1925777804[label="outcomes
+[0..*]"];
+ConditionEvaluationReport1603553265 -> ConditionMessage1603553265[label="addNoMatchOutcomeToAncestors() -> forCondition()"];
+ConditionEvaluationReport1603553265 -> ConditionOutcome1603553265[label="addNoMatchOutcomeToAncestors() -> noMatch()"];
+ConditionOutcome1603553265 -> ConditionMessage1603553265[label="message
+[0..1]"];
+ConfigurationPropertyNameAliases825020930 -> ConfigurationPropertyName825020930[label="aliases
+[0..*]"];
+DataSourceBuilder110150352 -> AliasedConfigurationPropertySource825020930[arrowhead=none];
+DataSourceBuilder110150352 -> Bindable1658444772[label="bind() -> ofInstance()"];
+DataSourceBuilder110150352 -> Binder1658444772[label="bind() -> bind()"];
+DataSourceBuilder110150352 -> FilteredConfigurationPropertiesSource825020930[arrowhead=none];
+DataSourceBuilder110150352 -> MapConfigurationPropertySource825020930[label="getConfigurationProperty() -> getConfigurationProperty()", arrowhead=none];
+DataSourceBuilder110150352 -> SpringConfigurationPropertySource825020930[arrowhead=none];
+DataSourceBuilder110150352 -> SpringIterableConfigurationPropertySource825020930[label="getConfigurationProperty() -> getConfigurationProperty()", arrowhead=none];
+DevToolsDataSourceCondition800397202 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+EmbeddedDatabaseCondition1397354395 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+EmbeddedDatabaseCondition1397354395 -> SpringBootCondition1603553265[label="pooledCondition
+[0..1]"];
+EmbeddedLdapCondition1419724749 -> BindResult1658444772[label="getMatchOutcome() -> orElseGet()"];
+EmbeddedLdapCondition1419724749 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+ErrorTemplateMissingCondition1970360864 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+ErrorTemplateMissingCondition1970360864 -> ItemsBuilder1384576651[label="getMatchOutcome() -> atAll()"];
+ErrorTemplateMissingCondition1970360864 -> TemplateAvailabilityProviders1622584570[label="getMatchOutcome() -> getProvider()"];
+FilteredConfigurationPropertiesSource825020930 -> ConfigurationPropertyName825020930[label="filter
+[0..1]"];
+FilteredConfigurationPropertiesSource825020930 -> FilteredIterableConfigurationPropertiesSource825020930[arrowhead=none, arrowtail=empty, dir=both];
+FilteringSpringBootCondition1603553265 -> OnBeanCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+FilteringSpringBootCondition1603553265 -> OnClassCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+FilteringSpringBootCondition1603553265 -> OnWebApplicationCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+GitResourceAvailableCondition607487180 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+HazelcastConfigResourceCondition1410563387 -> Builder1384576651[label="getResourceOutcome() -> because()"];
+HazelcastConfigResourceCondition1410563387 -> ConditionOutcome1603553265[label="getResourceOutcome() -> match()"];
+HazelcastConfigResourceCondition1410563387 -> ConfigAvailableCondition1298436375[arrowhead=none, arrowtail=empty, dir=both];
+ImportAutoConfigurationImportSelector1520003554 -> Registrar1694777448[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> AbstractDiscoveredEndpoint235229484[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> AbstractExposableEndpoint238891159[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> BindResult1658444772[label="bind() -> orElseGet()"];
+IncludeExcludeEndpointFilter1330765586 -> Bindable1658444772[label="bind() -> listOf()"];
+IncludeExcludeEndpointFilter1330765586 -> Binder1658444772[label="bind() -> bind()"];
+IncludeExcludeEndpointFilter1330765586 -> DiscoveredControllerEndpoint484051758[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> DiscoveredJmxEndpoint1041024947[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> DiscoveredServletEndpoint484051758[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> DiscoveredWebEndpoint484051758[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> DiscovererEndpointFilter235229484[arrowhead=none];
+IncludeExcludeEndpointFilter1330765586 -> EndpointPatterns2007539611[label="defaultIncludes
+[0..1]"];
+IncludeExcludeEndpointFilter1330765586 -> EndpointPatterns2007539611[label="exclude
+[0..1]"];
+IncludeExcludeEndpointFilter1330765586 -> EndpointPatterns2007539611[label="include
+[0..1]"];
+IncludeExcludeEndpointFilter1330765586 -> ExposeExcludePropertyEndpointFilter2086736288[arrowhead=none, arrowtail=empty, dir=both];
+IncludeExcludeEndpointFilter1330765586 -> Exposure1200974813[arrowhead=none, arrowtail=empty, dir=both];
+IssuerUriCondition1667207167 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+ItemsBuilder1384576651 -> Builder1384576651[label="condition
+[0..1]"];
+JCacheProviderAvailableCondition3850620 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+JCacheProviderAvailableCondition3850620 -> ItemsBuilder1384576651[label="getMatchOutcome() -> atAll()"];
+KeyValueCondition1667207167 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+LogFileCondition1148123300 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+LogbackLoggingCondition708914905 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+MapConfigurationPropertySource825020930 -> AliasedIterableConfigurationPropertySource825020930[arrowhead=none];
+MapConfigurationPropertySource825020930 -> FilteredIterableConfigurationPropertiesSource825020930[arrowhead=none];
+MapConfigurationPropertySource825020930 -> SpringIterableConfigurationPropertySource825020930[arrowhead=none];
+NoneNestedConditions1603553265 -> Builder1384576651[label="getFinalMatchOutcome() -> because()"];
+NoneNestedConditions1603553265 -> JacksonAndJsonbUnavailableCondition14627095[arrowhead=none, arrowtail=empty, dir=both];
+NoneNestedConditions1603553265 -> MultipleNonPrimaryMeterRegistriesCondition456142625[arrowhead=none, arrowtail=empty, dir=both];
+NoneNestedConditions1603553265 -> NonServletApplicationCondition220224379[arrowhead=none, arrowtail=empty, dir=both];
+NoneNestedConditions1603553265 -> NotReactiveWebApplicationCondition1172978353[arrowhead=none, arrowtail=empty, dir=both];
+OnAvailableEndpointCondition1005336333 -> EndpointId238891159[label="getMatchOutcome() -> of()"];
+OnAvailableEndpointCondition1005336333 -> Exposure1200974813[label="getMatchOutcome() -> isExposed()"];
+OnClassCondition1603553265 -> StandardOutcomesResolver2091883935[arrowhead=none];
+OnClassCondition1603553265 -> ThreadedOutcomesResolver2091883935[arrowhead=none];
+OnCloudPlatformCondition1603553265 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnCloudPlatformCondition1603553265 -> ItemsBuilder1384576651[label="getMatchOutcome() -> atAll()"];
+OnEnabledDevToolsCondition893855324 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnEnabledDevToolsCondition893855324 -> DevToolsEnablementDeducer157075266[label="getMatchOutcome() -> shouldEnable()"];
+OnEnabledLoggingSystemCondition1693581417 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnEnabledResourceChainCondition977558856 -> Chain655749529[label="getMatchOutcome() -> getEnabled()"];
+OnEnabledResourceChainCondition977558856 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnEndpointElementCondition97176771 -> OnEnabledHealthIndicatorCondition1949267481[arrowhead=none, arrowtail=empty, dir=both];
+OnEndpointElementCondition97176771 -> OnEnabledInfoContributorCondition1955549945[arrowhead=none, arrowtail=empty, dir=both];
+OnExpressionCondition1603553265 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnExpressionCondition1603553265 -> ConditionOutcome1603553265[label="getMatchOutcome() -> noMatch()"];
+OnInitializedRestarterCondition885724324 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnJavaCondition1603553265 -> Builder1384576651[label="getMatchOutcome() -> foundExactly()"];
+OnJavaCondition1603553265 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnJndiCondition1603553265 -> ItemsBuilder1384576651[label="getMatchOutcome() -> atAll()"];
+OnJndiCondition1603553265 -> JndiLocator1810741940[label="getMatchOutcome() -> lookupFirstLocation()"];
+OnManagementPortCondition1579274968 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnPropertyCondition1603553265 -> Spec1608277464[label="determineOutcome() -> collectProperties()"];
+OnPropertyListCondition1603553265 -> Builder1384576651[label="messageBuilder
+[0..1]"];
+OnPropertyListCondition1603553265 -> OnBootstrapHostsCondition283908723[arrowhead=none, arrowtail=empty, dir=both];
+OnPropertyListCondition1603553265 -> OnWsdlLocationsCondition1744067162[arrowhead=none, arrowtail=empty, dir=both];
+OnRepositoryTypeCondition238984246 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+OnWebApplicationCondition1603553265 -> PropertiesAutoConfigurationMetadata1377215651[arrowhead=none];
+PathBasedTemplateAvailabilityProvider1622584570 -> FreeMarkerTemplateAvailabilityProvider1703133902[arrowhead=none, arrowtail=empty, dir=both];
+PathBasedTemplateAvailabilityProvider1622584570 -> GroovyTemplateAvailabilityProvider1566371406[arrowhead=none, arrowtail=empty, dir=both];
+PathBasedTemplateAvailabilityProvider1622584570 -> TemplateAvailabilityProperties46573740[label="propertiesClass
+[0..1]"];
+PooledDataSourceAvailableCondition1397354395 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+PooledDataSourceAvailableCondition1397354395 -> DataSourceBuilder110150352[label="getMatchOutcome() -> findType()"];
+PooledDataSourceAvailableCondition1397354395 -> ItemsBuilder1384576651[label="getMatchOutcome() -> atAll()"];
+Registrar1694777448 -> AutoConfigurationPackages1520003554[label="registerBeanDefinitions() -> register()"];
+RegistrationConfiguredCondition1280856381 -> BindResult1658444772[label="getRegistrations() -> orElse()"];
+RegistrationConfiguredCondition1280856381 -> ConditionMessage1603553265[label="getMatchOutcome() -> forCondition()"];
+ResourceBundleCondition335867280 -> ConditionMessage1603553265[label="getMatchOutcomeForBasename() -> forCondition()"];
+ResourceCondition1603553265 -> ConditionMessage1603553265[label="startConditionMessage() -> forCondition()"];
+ResourceCondition1603553265 -> ConfigAvailableCondition587798533[arrowhead=none, arrowtail=empty, dir=both];
+ResourceCondition1603553265 -> HazelcastConfigResourceCondition1410563387[arrowhead=none, arrowtail=empty, dir=both];
+Spec1185426515 -> SingleCandidateSpec1185426515[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> AbstractEndpointCondition1005336333[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> AbstractNestedCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> AbstractSessionCondition934217078[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> CacheCondition1182362506[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> ClientsConfiguredCondition528807940[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> DefaultDispatcherServletCondition1155527256[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> DevToolsDataSourceCondition800397202[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> DispatcherServletRegistrationCondition1155527256[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> EmbeddedDatabaseCondition1397354395[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> EmbeddedLdapCondition1419724749[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> ErrorTemplateMissingCondition1970360864[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> FilteringSpringBootCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> GitResourceAvailableCondition607487180[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> IssuerUriCondition1667207167[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> JCacheProviderAvailableCondition3850620[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> KeyValueCondition1667207167[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> Log4JCoreLoggerContextCondition1843499506[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> LogFileCondition1148123300[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> LogbackLoggingCondition708914905[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnAvailableEndpointCondition1005336333[label="getMatchOutcome() -> getMatchOutcome()"];
+SpringBootCondition1603553265 -> OnBeanCondition1603553265[label="getMatchOutcome() -> getMatchOutcome()"];
+SpringBootCondition1603553265 -> OnClassCondition1603553265[label="getMatchOutcome() -> getMatchOutcome()"];
+SpringBootCondition1603553265 -> OnCloudPlatformCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnEnabledDevToolsCondition893855324[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnEnabledEndpointCondition1005336333[label="getMatchOutcome() -> getMatchOutcome()"];
+SpringBootCondition1603553265 -> OnEnabledLoggingSystemCondition1693581417[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnEnabledResourceChainCondition977558856[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnEndpointElementCondition97176771[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnExpressionCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnInitializedRestarterCondition885724324[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnJavaCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnJndiCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnManagementPortCondition1579274968[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnPropertyCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnPropertyListCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnRepositoryTypeCondition238984246[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnResourceCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> OnWebApplicationCondition1603553265[label="getMatchOutcome() -> getMatchOutcome()"];
+SpringBootCondition1603553265 -> PooledDataSourceAvailableCondition1397354395[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> RegistrationConfiguredCondition1280856381[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> ResourceBundleCondition335867280[arrowhead=none, arrowtail=empty, dir=both];
+SpringBootCondition1603553265 -> ResourceCondition1603553265[arrowhead=none, arrowtail=empty, dir=both];
+SpringConfigurationPropertySource825020930 -> ConfigurationProperty825020930[label="find() -> of()"];
+SpringConfigurationPropertySource825020930 -> ConfigurationPropertyName825020930[label="containsDescendantOf
+[0..1]"];
+SpringConfigurationPropertySource825020930 -> DefaultPropertyMapper825020930[arrowhead=none];
+SpringConfigurationPropertySource825020930 -> DelegatingPropertyMapper1722068365[arrowhead=none];
+SpringConfigurationPropertySource825020930 -> PropertyMapping825020930[label="find() -> isApplicable()"];
+SpringConfigurationPropertySource825020930 -> PropertySourceOrigin1363403333[label="find() -> get()"];
+SpringConfigurationPropertySource825020930 -> SpringIterableConfigurationPropertySource825020930[arrowhead=none, arrowtail=empty, dir=both];
+SpringConfigurationPropertySource825020930 -> SystemEnvironmentPropertyMapper825020930[arrowhead=none];
+StandardOutcomesResolver2091883935 -> Builder1384576651[label="getOutcome() -> didNotFind()"];
+StandardOutcomesResolver2091883935 -> ConditionMessage1603553265[label="getOutcome() -> forCondition()"];
+StandardOutcomesResolver2091883935 -> ConditionOutcome1603553265[label="getOutcome() -> noMatch()"];
+StandardOutcomesResolver2091883935 -> ItemsBuilder1384576651[label="getOutcome() -> items()"];
+Strategy655749529 -> Content655749529[label="content
+[0..1]"];
+Strategy655749529 -> Fixed655749529[label="fixed
+[0..1]"];
+TemplateAvailabilityProviders1622584570 -> JspTemplateAvailabilityProvider1720743839[arrowhead=none];
+TemplateAvailabilityProviders1622584570 -> MustacheTemplateAvailabilityProvider552944820[arrowhead=none];
+TemplateAvailabilityProviders1622584570 -> NoTemplateAvailabilityProvider1668257829[arrowhead=none];
+TemplateAvailabilityProviders1622584570 -> PathBasedTemplateAvailabilityProvider1622584570[arrowhead=none];
+TemplateAvailabilityProviders1622584570 -> ThymeleafTemplateAvailabilityProvider153946961[arrowhead=none];
+ThreadedOutcomesResolver2091883935 -> ConditionOutcome1603553265[label="outcomes
+[0..*]"];
+    
+}
+@enduml
